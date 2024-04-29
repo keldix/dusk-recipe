@@ -14,11 +14,11 @@ tasks:
   
   # Download and prepare server.cfg / loadingscreen / database
   - action: download_file
-    url: https://raw.githubusercontent.com/keldix/dusk-recipe/server.cfg
+    url: https://raw.githubusercontent.com/keldix/dusk-recipe/main/server.cfg
     path: ./server.cfg
 
   - action: download_file
-    url: https://raw.githubusercontent.com/keldix/dusk-recipe/dusklogo.png
+    url: https://raw.githubusercontent.com/keldix/dusk-recipe/main/dusklogo.png
     path: ./dusklogo.png
 
   # Download basic resources and ESX dependencies
