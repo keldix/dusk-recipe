@@ -1,0 +1,65 @@
+$engine: 3
+$onesync: on
+name: Dusk
+author: Keldix
+description: Soon
+
+tasks:
+  # Download default CFX resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources/[cfx-default]
+  
+  # Download and prepare server.cfg / loadingscreen / database
+  - action: download_file
+    url: https://raw.githubusercontent.com/keldix/dusk-recipe/server.cfg
+    path: ./server.cfg
+
+  - action: download_file
+    url: https://raw.githubusercontent.com/keldix/dusk-recipe/dusklogo.png
+    path: ./dusklogo.png
+
+  # Download basic resources and ESX dependencies
+
+  - action: connect_database
+
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/files/oxmysql.zip
+
+  - action: download_file
+    path: ./tmp/files/ox_doorlock.zip
+    url: https://github.com/keldix/ox_doorlock/releases/latest/download/ox_doorlock.zip
+  - action: unzip
+    dest: ./resources/[ox]
+    src: ./tmp/files/ox_doorlock.zip
+
+  - action: download_file
+    path: ./tmp/files/ox_inventory.zip
+    url: https://github.com/keldix/ox_inventory/releases/latest/download/ox_inventory.zip
+  - action: unzip
+    dest: ./resources/[ox]
+    src: ./tmp/files/ox_inventory.zip
+
+  - action: download_file
+    path: ./tmp/files/ox_target.zip
+    url: https://github.com/keldix/ox_target/releases/latest/download/ox_target.zip
+  - action: unzip
+    dest: ./resources/[ox]
+    src: ./tmp/files/ox_target.zip
+
+  - action: download_file
+    path: ./tmp/files/ox_lib.zip
+    url: https://github.com/keldix/ox_lib/releases/latest/download/ox_lib.zip
+  - action: unzip
+    dest: ./resources/[ox]
+    src: ./tmp/files/ox_lib.zip
+
+  ## Cleanup
+  - action: remove_path
+    path: ./tmp
